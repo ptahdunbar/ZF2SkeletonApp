@@ -20,22 +20,18 @@ return [
                     'route'    => '/',
                     'defaults' =>
                     [
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Index',
                         'action'     => 'index',
                     ],
                 ],
             ],
 
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
             'application' =>
             [
-                'type'    => 'Literal',
+                'type'    => 'literal',
                 'options' =>
                 [
-                    'route'    => '/application',
+                    'route'    => '/app',
                     'defaults' =>
                     [
                         '__NAMESPACE__' => 'Application\Controller',
@@ -48,7 +44,7 @@ return [
                 [
                     'default' =>
                     [
-                        'type'    => 'Segment',
+                        'type'    => 'segment',
                         'options' =>
                         [
                             'route'    => '/[:controller[/:action]]',
@@ -95,7 +91,7 @@ return [
     [
         'invokables' =>
         [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Index' => 'Application\Controller\IndexController'
         ],
     ],
     'view_manager' =>
