@@ -2,9 +2,6 @@
 /**
  * Global configurations for this module.
  */
-
-use Zend\I18n\Translator\TranslatorServiceFactory;
-
 return [
     'service_manager' =>
     [
