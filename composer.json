@@ -1,14 +1,13 @@
 {
-    "name": "ptahdunbar/ZF2Skeleton",
-    "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
+    "name":                             "ptahdunbar/ZF2SkeletonApp",
+    "description":                      "A skeleton application for ZF2 projects.",
+    "license":                          "BSD-3-Clause",
     "keywords": [
-        "framework",
-        "zf2"
+                                        "framework",
+                                        "zf2"
     ],
-    "homepage": "http://framework.zend.com/",
     "require": {
-        "php": ">=5.4",
-        "zendframework/zendframework": ">2.2.0rc1"
+        "php":                          ">=5.4",
+        "zendframework/zendframework":  ">2.2.0rc1"
     }
 }
