@@ -1,6 +1,10 @@
 ZF2 Skeleton App
 ================
 
+Installed Modules
+* https://github.com/zendframework/ZFTool
+* https://github.com/zendframework/ZendDeveloperTools
+
 Modules to consider
 
 * https://github.com/EvanDotPro/EdpModuleLayouts
