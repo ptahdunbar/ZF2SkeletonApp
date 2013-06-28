@@ -14,6 +14,7 @@ switch ( APP_ENV ) {
             $modules,
             [
                 'ZendDeveloperTools',
+                'ZFTool',
             ]
         );
         break;
