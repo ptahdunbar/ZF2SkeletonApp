@@ -10,8 +10,12 @@
  * - *.global.php
  */
 
+
 $config = [];
-$pattern = sprintf(__DIR__ . '/autoload/*{,.local,%s,.global}.php', APP_ENV);
+$pattern = sprintf(
+    __DIR__ . '/autoload/*{,.local,%s,.global}.php',
+    ( defined('APP_ENV') ? APP_ENV : '' )
+);
 $configFiles = array_reverse(array_unique(array_reverse(glob($pattern, GLOB_BRACE))));
 
 foreach( $configFiles as $configFile ) {
