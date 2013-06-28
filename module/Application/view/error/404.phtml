@@ -1,5 +1,5 @@
-<h1><?= $this->translate('A 404 error occurred') ?></h1>
-<h2><?= $this->message ?></h2>
+<h1><?= $this->translate('__title_error_404_error'); ?></h1>
+<h2><?= $this->message; ?></h2>
 
 <?php if (isset($this->reason) && $this->reason): ?>
 
@@ -7,38 +7,38 @@
 $reasonMessage= '';
 switch ($this->reason) {
     case 'error-controller-cannot-dispatch':
-        $reasonMessage = $this->translate('The requested controller was unable to dispatch the request.');
+        $reasonMessage = $this->translate('__message_error_controller_cannot_dispatch');
         break;
     case 'error-controller-not-found':
-        $reasonMessage = $this->translate('The requested controller could not be mapped to an existing controller class.');
+        $reasonMessage = $this->translate('__message_error_controller_not_found');
         break;
     case 'error-controller-invalid':
-        $reasonMessage = $this->translate('The requested controller was not dispatchable.');
+        $reasonMessage = $this->translate('__message_error_controller_invalid');
         break;
     case 'error-router-no-match':
-        $reasonMessage = $this->translate('The requested URL could not be matched by routing.');
+        $reasonMessage = $this->translate('__message_error_router_no_match_found');
         break;
     default:
-        $reasonMessage = $this->translate('We cannot determine at this time why a 404 was generated.');
+        $reasonMessage = $this->translate('__message_error_404_unknown_error');
         break;
 }
 ?>
 
-<p><?= $reasonMessage ?></p>
+<p><?= $reasonMessage; ?></p>
 
 <?php endif ?>
 
 <?php if (isset($this->controller) && $this->controller): ?>
 
 <dl>
-    <dt><?= $this->translate('Controller') ?>:</dt>
-    <dd><?= $this->escapeHtml($this->controller) ?>
+    <dt><?= $this->translate('__label_controller'); ?>:</dt>
+    <dd><?= $this->escapeHtml($this->controller); ?>
 <?php
 if (isset($this->controller_class)
     && $this->controller_class
     && $this->controller_class != $this->controller
 ) {
-    echo '(' . sprintf($this->translate('resolves to %s'), $this->escapeHtml($this->controller_class)) . ')';
+    echo '(' . sprintf($this->translate('__message_resolves_to'), $this->escapeHtml($this->controller_class)) . ')';
 }
 ?>
 </dd>
@@ -50,20 +50,20 @@ if (isset($this->controller_class)
 
 <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
 <hr/>
-<h2><?= $this->translate('Additional information') ?>:</h2>
+<h2><?= $this->translate('__title_error_more_info'); ?>:</h2>
 <h3><?= get_class($this->exception); ?></h3>
 <dl>
-    <dt><?= $this->translate('File') ?>:</dt>
+    <dt><?= $this->translate('__label_file'); ?>:</dt>
     <dd>
-        <pre class="prettyprint linenums"><?= $this->exception->getFile() ?>:<?= $this->exception->getLine() ?></pre>
+        <pre class="prettyprint linenums"><?= $this->exception->getFile(); ?>:<?= $this->exception->getLine(); ?></pre>
     </dd>
-    <dt><?= $this->translate('Message') ?>:</dt>
+    <dt><?= $this->translate('__label_message'); ?>:</dt>
     <dd>
-        <pre class="prettyprint linenums"><?= $this->exception->getMessage() ?></pre>
+        <pre class="prettyprint linenums"><?= $this->exception->getMessage(); ?></pre>
     </dd>
-    <dt><?= $this->translate('Stack trace') ?>:</dt>
+    <dt><?= $this->translate('__label_stack_trace'); ?>:</dt>
     <dd>
-        <pre class="prettyprint linenums"><?= $this->exception->getTraceAsString() ?></pre>
+        <pre class="prettyprint linenums"><?= $this->exception->getTraceAsString(); ?></pre>
     </dd>
 </dl>
 <?php
@@ -71,23 +71,23 @@ if (isset($this->controller_class)
     if ($e) :
 ?>
 <hr/>
-<h2><?= $this->translate('Previous exceptions') ?>:</h2>
+<h2><?= $this->translate('__title_error_previous_exception'); ?>:</h2>
 <ul class="unstyled">
     <?php while($e) : ?>
     <li>
         <h3><?= get_class($e); ?></h3>
         <dl>
-            <dt><?= $this->translate('File') ?>:</dt>
+            <dt><?= $this->translate('__label_file'); ?>:</dt>
             <dd>
-                <pre class="prettyprint linenums"><?= $e->getFile() ?>:<?= $e->getLine() ?></pre>
+                <pre class="prettyprint linenums"><?= $e->getFile(); ?>:<?= $e->getLine(); ?></pre>
             </dd>
-            <dt><?= $this->translate('Message') ?>:</dt>
+            <dt><?= $this->translate('__label_message'); ?>:</dt>
             <dd>
-                <pre class="prettyprint linenums"><?= $e->getMessage() ?></pre>
+                <pre class="prettyprint linenums"><?= $e->getMessage(); ?></pre>
             </dd>
-            <dt><?= $this->translate('Stack trace') ?>:</dt>
+            <dt><?= $this->translate('__label_stack_trace'); ?>:</dt>
             <dd>
-                <pre class="prettyprint linenums"><?= $e->getTraceAsString() ?></pre>
+                <pre class="prettyprint linenums"><?= $e->getTraceAsString(); ?></pre>
             </dd>
         </dl>
     </li>
@@ -100,8 +100,8 @@ if (isset($this->controller_class)
 
 <?php else: ?>
 
-<h3><?= $this->translate('No Exception available') ?></h3>
+<h3><?= $this->translate('__title_error_no_exception_available'); ?></h3>
 
-<?php endif ?>
+<?php endif; ?>
 
-<?php endif ?>
+<?php endif; ?>
