@@ -2,6 +2,9 @@
 /**
  * Global configurations for this module.
  */
+
+use Zend\I18n\Translator\TranslatorServiceFactory;
+
 return [
     'service_manager' =>
     [
@@ -10,9 +13,9 @@ return [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ],
-        'aliases' =>
+        'factories' =>
         [
-            'translator' => 'MvcTranslator',
+            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
         ],
     ],
     'translator' =>
