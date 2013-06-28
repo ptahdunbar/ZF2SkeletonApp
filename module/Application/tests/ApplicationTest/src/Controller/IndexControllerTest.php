@@ -64,15 +64,4 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     {
         $this->assertInstanceOf('Zend\ServiceManager\ServiceLocatorAwareInterface', $this->controller);
     }
-
-    public function testIndexActionCanBeAccessed()
-    {
-//        $this->dispatch('/');
-//        $this->assertResponseStatusCode(200);
-//
-//        $this->assertModuleName('application');
-//        $this->assertControllerName('application_index');
-//        $this->assertControllerClass('IndexController');
-//        $this->assertMatchedRouteName('home');
-    }
 }
