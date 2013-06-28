@@ -8,13 +8,25 @@ use Application\Controller\IndexController;
 
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
+/**
+ * IndexControllerTest
+ *
+ * @package ApplicationTest\Controller
+ */
 class IndexControllerTest extends AbstractHttpControllerTestCase
 {
     /**
+     * Object under test.
+     *
      * @var \Application\Controller\IndexController $controller
      */
     protected $controller;
 
+    /**
+     * This method is called before a test is executed.
+     *
+     * Setup the fixture, for example, open a network connection.
+     */
     public function setUp()
     {
         $this->setApplicationConfig(
@@ -51,5 +63,16 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     public function testControllerIsServiceManagerAware()
     {
         $this->assertInstanceOf('Zend\ServiceManager\ServiceLocatorAwareInterface', $this->controller);
+    }
+
+    public function testIndexActionCanBeAccessed()
+    {
+//        $this->dispatch('/');
+//        $this->assertResponseStatusCode(200);
+//
+//        $this->assertModuleName('application');
+//        $this->assertControllerName('application_index');
+//        $this->assertControllerClass('IndexController');
+//        $this->assertMatchedRouteName('home');
     }
 }
