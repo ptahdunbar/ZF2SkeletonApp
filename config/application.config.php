@@ -5,6 +5,8 @@ if ( ! defined('APP_ENV') ) {
 }
 
 $modules = [
+    'DoctrineModule',
+    'DoctrineORMModule',
     'Application',
 ];
 
