@@ -54,7 +54,7 @@
             <?= $this->content; ?>
             <hr>
             <footer>
-                <p><?= $this->translate('__message_colophon'); ?></p>
+                <p><?= sprintf($this->translate('__message_colophon'), date('Y')); ?></p>
             </footer>
         </div> <!-- /container -->
         <?= $this->inlineScript(); ?>
