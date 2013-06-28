@@ -10,9 +10,12 @@ $modules = [
 
 switch ( APP_ENV ) {
     case 'development':
-        $modules = array_merge($modules, [
-//            'ZendDeveloperTools',
-        ]);
+        $modules = array_merge(
+            $modules,
+            [
+                'ZendDeveloperTools',
+            ]
+        );
         break;
     case 'testing':
         break;
