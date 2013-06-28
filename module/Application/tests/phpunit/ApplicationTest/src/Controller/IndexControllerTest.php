@@ -3,9 +3,7 @@
 namespace ApplicationTest\Controller;
 
 use Tests\Bootstrap;
-
-use Application\Controller\IndexController;
-
+use ZendSkeletonModule\Controller\IndexController;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**

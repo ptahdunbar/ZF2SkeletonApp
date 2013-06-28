@@ -6,8 +6,8 @@
     printerClass="NyanCat\PHPunit\ResultPrinter"
 >
     <testsuites>
-        <testsuite name="module-app">
-            <directory suffix="Test.php">../module/Application/tests/ApplicationTest</directory>
+        <testsuite name="module-Application">
+            <directory suffix="Test.php">../module/Application/tests/phpunit/ApplicationTest</directory>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -11,12 +11,33 @@ use RuntimeException;
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
 
+/**
+ * Bootstrap
+ *
+ * Configures the service manager based on the configuration defined in
+ * config/application.config.php.
+ *
+ * @package Tests
+ */
 class Bootstrap
 {
+    /**
+     * @var \Zend\ServiceManager\ServiceManager $serviceManager
+     */
     protected static $serviceManager;
-    protected static $config;
-    protected static $bootstrap;
 
+    /**
+     * Returns an array based on the configuration files loaded.
+     *
+     * @var array $config
+     */
+    protected static $config;
+
+    /**
+     * PHPUnit invokes this method when you run `phpunit`.
+     *
+     * @return void
+     */
     public static function init()
     {
         define( 'APP_ENV', 'testing' );
@@ -58,17 +79,39 @@ class Bootstrap
         static::$config = $config;
     }
 
+    /**
+     * @return ServiceManager
+     */
     public static function getServiceManager()
     {
         return static::$serviceManager;
     }
 
+    /**
+     * @return array
+     */
     public static function getConfig()
     {
         return static::$config;
     }
 
+    /**
+     * Invokes the autoloaders.
+     *
+     * @return void
+     */
     protected static function initAutoloader()
+    {
+        static::initComposerAutoloader();
+        static::initZendAutoloader();
+    }
+
+    /**
+     * Uses composer to configure the autoloading.
+     *
+     * @return void
+     */
+    protected static function initComposerAutoloader()
     {
         $vendorPath = static::findParentPath('vendor');
 
@@ -76,25 +119,41 @@ class Bootstrap
         if ( is_readable($vendorPath . '/autoload.php') ) {
             $loader = include $vendorPath . '/autoload.php';
         }
+    }
 
-        // ZF2 Autoloader for our tests.
+    /**
+     * Uses the standard Zend\Loader\StandardAutoloader class to configure
+     * the autoloading.
+     *
+     * @return void
+     */
+    protected static function initZendAutoloader()
+    {
         AutoloaderFactory::factory([
             'Zend\Loader\StandardAutoloader' =>
             [
                 'autoregister_zf' => true,
                 'namespaces' =>
                 [
-                    'ApplicationTest' =>  __DIR__ . '../module/Application/tests/ApplicationTest/src',
+                    'ApplicationTest'           => __DIR__ . '../module/Application/tests/phpunit/ApplicationTest/src',
+                    'ZendSkeletonModuleTest'    => __DIR__ . '../module/ZendSkeletonModule/tests/phpunit/ZendSkeletonModuleTest/src',
                 ]
             ]
         ]);
     }
 
+    /**
+     * Helper method to crawl up the file system tree to locate directories.
+     *
+     * @param string $path
+     *
+     * @return bool|string
+     */
     protected static function findParentPath($path)
     {
         $dir = __DIR__;
         $previousDir = '.';
-        while (!is_dir($dir . '/' . $path)) {
+        while ( ! is_dir($dir . '/' . $path) ) {
             $dir = dirname($dir);
             if ($previousDir === $dir) return false;
             $previousDir = $dir;
