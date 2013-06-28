@@ -13,7 +13,7 @@ return [
     [
         'invokables' =>
         [
-            'Application\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
         ],
     ],
     'router' =>
