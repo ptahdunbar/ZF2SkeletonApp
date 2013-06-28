@@ -4,84 +4,52 @@ namespace ApplicationTest\Controller;
 
 use Tests\Bootstrap;
 
-use Zend\Http\Request,
-    Zend\Http\Response;
+use Application\Controller\IndexController;
 
-use Zend\Mvc\MvcEvent;
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-use Zend\Mvc\Router\RouteMatch,
-    Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
-
-class IndexControllerTest extends \PHPUnit_Framework_TestCase
+class IndexControllerTest extends AbstractHttpControllerTestCase
 {
-    /**
-     * Fully Qualified Class Name.
-     *
-     * @var string
-     */
-    protected $fqcn = 'Application\Controller\IndexController';
-
     /**
      * @var \Application\Controller\IndexController $controller
      */
     protected $controller;
 
-    /**
-     * @var \Zend\Http\Request $request
-     */
-    protected $request;
-
-    /**
-     * @var \Zend\Http\Response $response
-     */
-    protected $response;
-
-    /**
-     * @var \Zend\Mvc\Router\RouteMatch $routeMatch
-     */
-    protected $routeMatch;
-
-    /**
-     * @var \Zend\Mvc\MvcEvent $event
-     */
-    protected $event;
-
-    protected function setUp()
+    public function setUp()
     {
-        $serviceManager = Bootstrap::getServiceManager();
-
-        $this->controller = new $this->fqcn;
-        $this->request    = new Request;
-        $this->routeMatch = new RouteMatch(['controller' => 'index']);
-        $this->event      = new MvcEvent;
-
-        $config = $serviceManager->get('Config');
-
-        $routerConfig = isset($config['router']) ? $config['router'] : [];
-        $router = HttpRouter::factory($routerConfig);
-
-        $this->event->setRouter($router);
-        $this->event->setRouteMatch($this->routeMatch);
-
-        $this->controller->setEvent($this->event);
-        $this->controller->setServiceLocator($serviceManager);
-    }
-
-    public function testIndexActionCanBeAccessed()
-    {
-        $this->routeMatch->setParam('action', 'index');
-
-        $result   = $this->controller->dispatch($this->request);
-        $response = $this->controller->getResponse();
-
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
-    public function testIndexActionReturnsViewModel()
-    {
-        $this->assertInstanceOf(
-            '\Zend\View\Model\ViewModel',
-            $this->controller->indexAction()
+        $this->setApplicationConfig(
+            Bootstrap::getConfig()
         );
+
+        parent::setUp();
+
+        $this->controller = new IndexController;
+    }
+
+    /**
+     * Zend Framework 2 controllers must implement
+     * \Zend\Stdlib\DispatchableInterface, however where extending that to
+     * extending \Zend\Mvc\Controller\AbstractController as it sets up the
+     * context and nessecary code.
+     */
+    public function testControllerIsDispatchable()
+    {
+        $this->assertInstanceOf('Zend\Mvc\Controller\AbstractController', $this->controller);
+    }
+
+    /**
+     * The controller should be able to fire off events.
+     */
+    public function testControllerIsEventManagerAware()
+    {
+        $this->assertInstanceOf('Zend\EventManager\EventManagerAwareInterface', $this->controller);
+    }
+
+    /**
+     * The controller must be able to access the service manager.
+     */
+    public function testControllerIsServiceManagerAware()
+    {
+        $this->assertInstanceOf('Zend\ServiceManager\ServiceLocatorAwareInterface', $this->controller);
     }
 }
