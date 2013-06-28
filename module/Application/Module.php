@@ -9,7 +9,7 @@ use Zend\ModuleManager\Feature\BootstrapListenerInterface,
     Zend\ModuleManager\Feature\AutoloaderProviderInterface,
     Zend\ModuleManager\Feature\ConfigProviderInterface,
     Zend\ModuleManager\Feature\ServiceProviderInterface,
-    Zend\ModuleManager\Feature\FormElementProviderInterface,
+    Zend\ModuleManager\Feature\FormElementProviderInterface
 ;
 
 /**
