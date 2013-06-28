@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;

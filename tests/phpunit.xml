@@ -2,10 +2,12 @@
     colors="true"
     bootstrap="./Bootstrap.php"
     backupGlobals="false"
+    printerFile="../vendor/whatthejeff/nyancat-phpunit-resultprinter/src/NyanCat/PHPUnit/ResultPrinter.php"
+    printerClass="NyanCat\PHPunit\ResultPrinter"
 >
     <testsuites>
         <testsuite name="module-app">
-            <directory>../module/Application/tests/ApplicationTest</directory>
+            <directory suffix="Test.php">../module/Application/tests/ApplicationTest</directory>
         </testsuite>
     </testsuites>
 </phpunit>
