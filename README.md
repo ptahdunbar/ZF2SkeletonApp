@@ -1,43 +1,16 @@
 ZF2 Skeleton App
 ================
 
-Introduction
-------------
-This is a mirror of the Zend Framework 2 skeleton application
-with a few opinionated tweaks that I frequently use for my projects.
+Modules to consider
 
-Feel free to fork it or contribute PRs, I'm all ears :)
+* https://github.com/EvanDotPro/EdpModuleLayouts
 
-Installation
-------------
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+DO
 
-    Clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+= service specific loaders
 
-    cd my/project/dir
-    git clone git://github.com/ptahdunbar/ZF2SkeletonApp.git
-    cd ZF2SkeletonApp
-    php composer.phar self-update
-    php composer.phar install
-
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
-
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
-
-    cd my/project/dir
-    curl -#L https://github.com/ptahdunbar/ZF2SkeletonApp/tarball/master | tar xz --strip-components=1
-
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Virtual Host
-------------
-Afterwards, set up a virtual host to point to the public/ directory of the
-project and you should be ready to go!
+Use the various service configuration methods when you need to define
+closures or instance callbacks for factories, abstract factories,
+and initializers. This prevents caching problems, and also allows you
+to write your configuration files in other markup formats.
