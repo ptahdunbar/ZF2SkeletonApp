@@ -39,7 +39,7 @@ return [
                 'type'    => 'literal',
                 'options' =>
                 [
-                    'route'    => '/app',
+                    'route'    => '/application',
                     'defaults' =>
                     [
                         '__NAMESPACE__' => 'Application\Controller',
